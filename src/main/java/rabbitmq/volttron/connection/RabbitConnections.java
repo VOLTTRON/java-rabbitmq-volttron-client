@@ -16,13 +16,17 @@ import com.rabbitmq.client.ConnectionFactory;
 public class RabbitConnections {
 	private Connection connection = null;
 
+	/**
+	 * Create a connection to the Rabbitmq bus and return it.
+	 * 
+	 * @return open connection
+	 * @throws GeneralSecurityException
+	 * @throws IOException
+	 */
 	public Connection connection() throws GeneralSecurityException, IOException {
 
 		char[] keyPassphrase = Config.keyStorePassword.toCharArray();
 		KeyStore ks = KeyStore.getInstance("PKCS12");
-		// ks.load(new
-		// FileInputStream("/home/osboxes/.volttron/certificates/jackpot-keystore.jks"),
-		// keyPassphrase);
 		ks.load(new FileInputStream(Config.keyStorePath), keyPassphrase);
 
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
@@ -31,10 +35,7 @@ public class RabbitConnections {
 		char[] trustPassphrase = Config.trustStorePassword.toCharArray();
 		KeyStore tks = KeyStore.getInstance("JKS");
 		tks.load(new FileInputStream(Config.trustStorePath), trustPassphrase);
-		// tks.load(new
-		// FileInputStream("/home/osboxes/.volttron/certificates/rabbitmq.ts"),
-		// trustPassphrase);
-
+		
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
 		tmf.init(tks);
 
