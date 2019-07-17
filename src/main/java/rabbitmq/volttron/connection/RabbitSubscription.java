@@ -24,18 +24,16 @@ public class RabbitSubscription extends DefaultConsumer implements Runnable {
 		// System.out.println(envelope.getRoutingKey());
 		String message = new String(body, "UTF-8");
 		System.out.println("received message " +message);
-
-//		super.handleDelivery(consumerTag, envelope, properties, body);
 	}
 
 	@Override
 	public void run() {
 		String queueName = "rabbitmq-java-test";
-		String routingKey = "__pubsub__.v2.#";
+		String routingKey = "__pubsub__."+Config.instanceName+".#";
 		
 		try {
 			channel.queueDeclare(queueName, false, true, true, null);
-			channel.queueBind(queueName, "volttron", routingKey);
+			channel.queueBind(Config.queueName, Config.exchangeName, routingKey);
 			channel.basicConsume(queueName, this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

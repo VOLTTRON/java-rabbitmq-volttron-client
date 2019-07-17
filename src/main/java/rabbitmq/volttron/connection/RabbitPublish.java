@@ -10,16 +10,14 @@ import com.rabbitmq.client.Channel;
 
 public class RabbitPublish implements Runnable {
 	private Channel channel = null;
-	private String sender = null;
 
-	public RabbitPublish(Channel channel, String sender) {
+	public RabbitPublish(Channel channel) {
 		this.channel = channel;
-		this.sender = sender;
 	}
 
 	@Override
 	public void run() {
-		VIP vip = new VIP(sender);
+		VIP vip = new VIP(Config.sender);
 		Gson gson = new Gson();
 		String message = gson.toJson(vip);
 		
@@ -35,7 +33,7 @@ public class RabbitPublish implements Runnable {
 				}
 				message = gson.toJson(vip);
 
-				channel.basicPublish("volttron", "__pubsub__.v2." + sender, null, message.getBytes());
+				channel.basicPublish("volttron", "__pubsub__."+ Config.instanceName + "." + Config.sender, null, message.getBytes());
 				i++;
 				try {
 					Thread.sleep(10000);
