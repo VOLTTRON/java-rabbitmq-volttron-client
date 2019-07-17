@@ -5,8 +5,6 @@ import com.rabbitmq.client.Connection;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-import com.rabbitmq.client.Channel;
-
 public class RabbitTestClient {
 	
 	public static void main(String[] args) throws Exception {
