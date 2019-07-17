@@ -33,7 +33,7 @@ public class RabbitPublish implements Runnable {
 				}
 				message = gson.toJson(vip);
 
-				channel.basicPublish("volttron", "__pubsub__."+ Config.instanceName + "." + Config.sender, null, message.getBytes());
+				channel.basicPublish(Config.exchangeName, "__pubsub__."+ Config.instanceName + "." + Config.sender, null, message.getBytes());
 				i++;
 				try {
 					Thread.sleep(10000);

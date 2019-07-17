@@ -18,19 +18,19 @@ public class RabbitConnections {
 
 	public Connection connection() throws GeneralSecurityException, IOException {
 
-		char[] keyPassphrase = "volttron".toCharArray();
+		char[] keyPassphrase = Config.keyStorePassword.toCharArray();
 		KeyStore ks = KeyStore.getInstance("PKCS12");
 		// ks.load(new
 		// FileInputStream("/home/osboxes/.volttron/certificates/jackpot-keystore.jks"),
 		// keyPassphrase);
-		ks.load(new FileInputStream("/home/osboxes/repos/volttron-develop-no-py3/jackpot-keystore.jks"), keyPassphrase);
+		ks.load(new FileInputStream(Config.keyStorePath), keyPassphrase);
 
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
 		kmf.init(ks, keyPassphrase);
 
-		char[] trustPassphrase = "volttron".toCharArray();
+		char[] trustPassphrase = Config.trustStorePassword.toCharArray();
 		KeyStore tks = KeyStore.getInstance("JKS");
-		tks.load(new FileInputStream("/home/osboxes/repos/volttron-develop-no-py3/rabbitmq.ts"), trustPassphrase);
+		tks.load(new FileInputStream(Config.trustStorePath), trustPassphrase);
 		// tks.load(new
 		// FileInputStream("/home/osboxes/.volttron/certificates/rabbitmq.ts"),
 		// trustPassphrase);
@@ -45,7 +45,7 @@ public class RabbitConnections {
 		factory.setHost("localhost");
 		factory.setPort(5671);
 		factory.useSslProtocol(c);
-		factory.setVirtualHost("volttron");
+		factory.setVirtualHost(Config.exchangeName);
 
 		try {
 			connection = factory.newConnection();
