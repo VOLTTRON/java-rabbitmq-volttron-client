@@ -23,7 +23,7 @@ public class RabbitConnections {
 		// ks.load(new
 		// FileInputStream("/home/osboxes/.volttron/certificates/jackpot-keystore.jks"),
 		// keyPassphrase);
-		ks.load(new FileInputStream("/home/osboxes/repos/volttron-develop-no-py3/foobar-keystore.jks"), keyPassphrase);
+		ks.load(new FileInputStream("/home/osboxes/repos/volttron-develop-no-py3/jackpot-keystore.jks"), keyPassphrase);
 
 		KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
 		kmf.init(ks, keyPassphrase);
