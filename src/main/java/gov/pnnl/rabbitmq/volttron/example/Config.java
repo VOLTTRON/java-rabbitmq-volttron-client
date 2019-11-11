@@ -9,6 +9,8 @@ public class Config {
 	public final static String instanceName = "v2";
 	// virtual host for connecting the exchange to.
 	public final static String exchangeName = "volttron";
+	
+	// Keystore and trust store paths to use.
 	public final static String keyStorePath = "/home/osboxes/repos/volttron-develop-no-py3/jackpot-keystore.jks";
 	public final static String trustStorePath = "/home/osboxes/repos/volttron-develop-no-py3/rabbitmq.ts";
 	public final static String keyStorePassword = "volttron";
