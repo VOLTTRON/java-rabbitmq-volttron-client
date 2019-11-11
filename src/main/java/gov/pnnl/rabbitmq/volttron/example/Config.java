@@ -1,4 +1,4 @@
-package rabbitmq.volttron.connection;
+package gov.pnnl.rabbitmq.volttron.example;
 
 public class Config {
 	// VIP identity which is publishing to the volttron bus

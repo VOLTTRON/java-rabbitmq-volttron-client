@@ -1,4 +1,4 @@
-package rabbitmq.volttron.connection;
+package gov.pnnl.rabbitmq.volttron.example;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package rabbitmq.volttron.connection;
+package gov.pnnl.rabbitmq.volttron.example;
 
 import java.io.FileInputStream;
 import java.io.IOException;
