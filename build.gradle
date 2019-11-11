@@ -12,6 +12,23 @@ plugins {
     id 'java-library'
 }
 
+
+version = '1.0.1'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//create a single Jar with all dependencies
+task jarWitDependencies(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'VOLTTRON Rabbitmq Bus Example',  
+        	'Implementation-Version': version,
+        	'Main-Class': 'gov.pnnl.rabbitmq.volttron.example.RabbitTestClient'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
