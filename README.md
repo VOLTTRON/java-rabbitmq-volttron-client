@@ -1,4 +1,4 @@
-# java rabbitmq volttron client
+# Java Based VOLTTRON Client via RabbitMQ
 
 ## Requirements
 
