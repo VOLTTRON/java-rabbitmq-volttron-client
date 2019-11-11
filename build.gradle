@@ -18,7 +18,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 //create a single Jar with all dependencies
-task jarWitDependencies(type: Jar) {
+task jarWithDependencies(type: Jar) {
 	manifest {
         attributes 'Implementation-Title': 'VOLTTRON Rabbitmq Bus Example',  
         	'Implementation-Version': version,
